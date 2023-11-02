@@ -1,0 +1,48 @@
+{% extends 'partials/base.html' %}
+{% block title %} Profile Page {% endblock title %}
+
+{% block content %}
+<div class="container">
+    <div class="row my-4">
+        <div class="col-md-4">
+
+        </div>
+        <div class="col-md-8 offset-md-2">
+            <div class="card">
+                <div class="card-header bg-info text-white">
+                    Profile Page
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <span class="h4"> Profile Information</span>
+                            <hr>
+                            <font size="20" face="consolas">
+                            <table class="table bg-white table-borderless">
+                                <tbody>
+                                    <tr>
+                                        <th scope="row" font="13">Name</th>
+                                        <td>{{request.user.username}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Email</th>
+                                        <td>{{request.user.email}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Phone</th>
+                                        <td>{{user.profile.phone}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <a class="btn btn-info btn-sm float-left" href="{% url 'user-profile_update' request.user.id %}">Edit</a>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
+    

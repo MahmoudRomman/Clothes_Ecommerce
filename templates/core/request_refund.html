@@ -1,0 +1,20 @@
+{% extends "partials/base.html" %}
+{% load bootstrap4 %}
+
+
+{% block content %}
+  <main>
+    <div class="container">
+        <h2>Request Refund</h2>
+        <form method="POST">
+            {% csrf_token %}
+            {% bootstrap_form form %}
+            <button type="Submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+
+  </main>
+
+{% endblock content %}
+
+

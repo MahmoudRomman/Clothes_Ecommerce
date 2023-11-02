@@ -1,0 +1,33 @@
+{% extends "partials/base.html" %}
+{% load bootstrap4 %}
+
+
+{% block content %}
+
+  <main >
+    <div class="container wow fadeIn">
+      <h2 class="my-5 h2">Payment</h2>
+      <div class="row">
+        {% include 'core/order_snippet.html' %}
+        
+        <div class="col-md-12 mb-4">
+          
+            <form method="POST" class="card-body" action="{% url 'core:create-checkout-session' %}">
+              {% csrf_token %}
+
+              <button class="btn btn-primary btn-lg btn-block" type="submit">Continue to payment details</button>
+
+            </form>
+            
+          
+
+        </div>
+
+
+      </div>
+
+    </div>
+  </main>
+
+{% endblock content %}
+

@@ -1,0 +1,14 @@
+{% extends 'partials/base.html' %}
+
+
+
+
+{% block content %}
+    <h2>item list</h2>
+
+    {% for item in itmes %}
+        {{item}}
+        <br>
+    {% endfor %}
+{% endblock content %}
+    

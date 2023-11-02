@@ -1,0 +1,97 @@
+{% extends "partials/base.html" %}
+{% load bootstrap4 %}
+
+
+{% block content %}
+
+  <main >
+    <div class="container wow fadeIn">
+      <h2 class="my-5 h2">Checkout form</h2>
+      <div class="row">
+        
+        <div class="col-md-12 mb-4">
+          <div class="card">
+            <form method="POST" class="card-body" action=".">
+              {% csrf_token %}
+
+              <h3>Shipping address</h3>
+
+              <div class='hideable_shipping_form'>
+
+                <div class="md-form mb-5">
+                {{form.street_address}}
+                  <label for="shipping_address" class="">Address</label>
+                </div>
+
+                <div class="md-form mb-5">
+                  {{form.apartment_address}}
+                  <label for="shipping_address2" class="">Address 2 (optional)</label>
+                </div>
+
+                <div class="row">
+                  <div class="col-lg-4 col-md-12 mb-4">
+                    <label for="country">Country</label>
+                    {{form.country}}
+                    <div class="invalid-feedback">
+                      Please select a valid country.
+                    </div>
+                  </div>
+
+                  <div class="col-lg-4 col-md-6 mb-4">
+                    <label for="shipping_zip">Zip</label>
+                    {{form.zip}}
+                    <div class="invalid-feedback">
+                      Zip code required.
+                    </div>
+                  </div>
+                </div>
+
+
+              </div>
+
+              <hr class="mb-4">
+              <button class="btn btn-primary btn-lg btn-block" type="submit">Continue to Payment</button>
+
+            </form>
+            
+          </div>
+
+        </div>
+
+          {% include 'core/order_snippet.html' %}
+
+      </div>
+
+    </div>
+  </main>
+
+{% endblock content %}
+
+
+
+{% block extra_scripts %}
+<script>
+var hideable_shipping_form = $('.hideable_shipping_form');
+var hideable_billing_form = $('.hideable_billing_form');
+
+var use_default_shipping = document.querySelector("input[name=use_default_shipping]");
+var use_default_billing = document.querySelector("input[name=use_default_billing]");
+
+use_default_shipping.addEventListener('change', function() {
+  if (this.checked) {
+    hideable_shipping_form.hide();
+  } else {
+    hideable_shipping_form.show();
+  }
+})
+
+use_default_billing.addEventListener('change', function() {
+  if (this.checked) {
+    hideable_billing_form.hide();
+  } else {
+    hideable_billing_form.show();
+  }
+})
+
+</script>
+{% endblock extra_scripts %}
